@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="LAB MMT - Education Game Platform dengan Code Kingdom dan FishingPedia">
+    <meta name="theme-color" content="#ffffff">
+    <title>LAB MMT - Education Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Clouds -->
+    <div class="clouds-container">
+        <img src="./assets/awan1.png" alt="Cloud" class="cloud cloud1">
+        <img src="./assets/awan2.png" alt="Cloud" class="cloud cloud2">
+        <img src="./assets/awan1.png" alt="Cloud" class="cloud cloud3">
+        <img src="./assets/awan2.png" alt="Cloud" class="cloud cloud4">
+        <img src="./assets/awan1.png" alt="Cloud" class="cloud cloud5">
+    </div>
+
+    <!-- Floating Kingdom Maps -->
+    <div class="floating-kingdoms">
+        <img src="./assets/kingdom.png" alt="Kingdom Map" class="kingdom kingdom1">
+        <img src="./assets/kingdom 2.png" alt="Kingdom Map" class="kingdom kingdom2">
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="title">LAB MMT</h1>
+            <p class="subtitle">EDUCATION GAME</p>
+        </header>
+
+        <div class="games-container">
+            <!-- Game 1: Code Kingdom -->
+            <div class="game-wrapper">
+                <div class="game-box" id="game1Box">
+                    <img src="./assets/logocodekingdom.png" alt="Code Kingdom" class="game-logo">
+                </div>
+                <button class="btn-play" id="startGame1" data-game="code-kingdom">PLAY</button>
+            </div>
+
+            <!-- Game 2: FishingPedia -->
+            <div class="game-wrapper">
+                <div class="game-box" id="game2Box">
+                    <img src="./assets/logofhising.png" alt="FishingPedia" class="game-logo">
+                </div>
+                <button class="btn-play" id="startGame2" data-game="fishingpedia">PLAY</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>version 1.0.0</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
