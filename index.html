@@ -36,24 +36,42 @@
         <div class="games-container">
             <!-- Game 1: Code Kingdom -->
             <div class="game-wrapper">
-                <div class="game-box" id="game1Box">
+                <div class="game-box" id="game1Box" data-game="code-kingdom">
                     <img src="./assets/logocodekingdom.png" alt="Code Kingdom" class="game-logo">
+                    <div class="tooltip">Belajar coding dengan petualangan seru!</div>
                 </div>
-                <button class="btn-play" id="startGame1" data-game="code-kingdom">PLAY</button>
+                <div class="button-group">
+                    <button class="btn-info" data-game="code-kingdom">INFO</button>
+                    <button class="btn-play" id="startGame1" data-game="code-kingdom">PLAY</button>
+                </div>
             </div>
 
             <!-- Game 2: FishingPedia -->
             <div class="game-wrapper">
-                <div class="game-box" id="game2Box">
+                <div class="game-box" id="game2Box" data-game="fishingpedia">
                     <img src="./assets/logofhising.png" alt="FishingPedia" class="game-logo">
+                    <div class="tooltip">Jelajahi dunia laut dan pelajari ikan!</div>
                 </div>
-                <button class="btn-play" id="startGame2" data-game="fishingpedia">PLAY</button>
+                <div class="button-group">
+                    <button class="btn-info" data-game="fishingpedia">INFO</button>
+                    <button class="btn-play" id="startGame2" data-game="fishingpedia">PLAY</button>
+                </div>
             </div>
         </div>
 
         <footer>
             <p>version 1.0.0</p>
         </footer>
+    </div>
+
+    <!-- Modal for Game Details -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
