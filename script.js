@@ -5,7 +5,8 @@
 // Game links configuration
 const gameLinks = {
     'code-kingdom': '', // Isi dengan link game Code Kingdom nanti
-    'fishingpedia': ''  // Isi dengan link game FishingPedia nanti
+    'fishingpedia': '',  // Isi dengan link game FishingPedia nanti
+    'oopedia': '' // Isi dengan link game OOPedia nanti
 };
 
 // Game details configuration
@@ -166,8 +167,108 @@ const gameDetails = {
             achievements: '60+',
             avgPlaytime: '35 hours'
         }
+    },
+    'oopedia': {
+        title: 'OOPedia',
+        logo: './assets/logooopedia.jpeg',
+        tagline: 'Petualangan Belajar OOP dengan OOPEDIA si Robot Pintar!',
+        description: 'Bergabunglah dengan OOPEDIA, robot pembelajaran interaktif yang siap membimbing kamu menguasai dunia Object-Oriented Programming! OOPedia adalah platform pembelajaran berbasis web yang dirancang khusus untuk mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Malang dalam mata kuliah Pemrograman Berorientasi Objek (PBO). Dengan antarmuka yang friendly dan metode pembelajaran yang interaktif, OOPEDIA membuat konsep-konsep kompleks seperti Inheritance, Polymorphism, Encapsulation, dan Abstraction menjadi mudah dipahami dan menyenangkan untuk dipelajari!',
+        
+        gameplayDescription: 'Platform ini menggabungkan teori dengan praktik melalui interactive modules, visual demonstrations, code playground, dan quiz system yang progressif. Setiap konsep OOP dijelaskan dengan analogi real-world, diagram interaktif, dan hands-on coding exercises. Sistem adaptive learning memastikan setiap mahasiswa belajar sesuai dengan pace mereka sendiri.',
+        
+        features: [
+            {
+                icon: '🤖',
+                title: 'OOPEDIA Interactive Guide',
+                desc: 'Robot virtual assistant yang memandu setiap langkah pembelajaran! OOPEDIA menjelaskan konsep dengan bahasa yang mudah dipahami, memberikan hints, dan motivasi sepanjang journey.'
+            },
+            {
+                icon: '📚',
+                title: 'Materi Pembelajaran Lengkap',
+                desc: 'Coverage komprehensif: Class & Object, Constructor & Destructor, Inheritance (Single, Multiple, Multilevel), Polymorphism (Overloading & Overriding), Encapsulation, Abstraction, Interface, Package, dan Exception Handling.'
+            },
+            {
+                icon: '💡',
+                title: 'Visualisasi Konsep',
+                desc: 'Diagram UML interaktif, class relationship visualizer, memory allocation simulator, dan animation untuk menjelaskan konsep abstrak secara visual dan intuitif.'
+            },
+            {
+                icon: '⌨️',
+                title: 'Code Playground',
+                desc: 'Built-in code editor dengan syntax highlighting, real-time compilation, dan instant feedback. Practice coding langsung di browser tanpa setup environment!'
+            },
+            {
+                icon: '📝',
+                title: 'Bank Soal & Quiz',
+                desc: 'Ratusan soal latihan dengan berbagai tingkat kesulitan: Multiple Choice, Fill in the Code, Debug Challenge, dan Code Writing. Auto-grading dengan explanation detail.'
+            },
+            {
+                icon: '🎯',
+                title: 'Learning Path Terstruktur',
+                desc: 'Kurikulum yang disusun progresif dari fundamental hingga advanced. Unlock module selanjutnya setelah menyelesaikan prerequisite dengan skor minimum.'
+            },
+            {
+                icon: '🏆',
+                title: 'Achievement & Progress',
+                desc: 'Track progress learning dengan dashboard personal. Dapatkan badges untuk setiap milestone: First Class, Inheritance Master, Polymorphism Pro, dan banyak lagi!'
+            },
+            {
+                icon: '🔍',
+                title: 'Real-World Examples',
+                desc: 'Setiap konsep dijelaskan dengan contoh real-world dan use cases praktis dari industry. Understand tidak hanya "how" tapi juga "why" dan "when" menggunakan setiap pattern.'
+            },
+            {
+                icon: '📊',
+                title: 'Analytics Dashboard',
+                desc: 'Lihat progress detail: topics mastered, time spent, quiz scores, weak areas, dan recommendations untuk improvement. Visualisasi learning curve kamu!'
+            },
+            {
+                icon: '💬',
+                title: 'Diskusi & Community',
+                desc: 'Forum diskusi untuk bertanya, berbagi knowledge, dan collaborate dengan sesama mahasiswa. OOPEDIA bot juga aktif menjawab pertanyaan umum 24/7!'
+            }
+        ],
+        
+        educationalValue: {
+            main: 'Membangun pemahaman mendalam tentang paradigma Object-Oriented Programming melalui pembelajaran terstruktur, interaktif, dan praktis',
+            points: [
+                'Object-Oriented Thinking: Mengembangkan mindset untuk memecah problem menjadi objects dan relationships',
+                'Design Principles: Memahami SOLID principles, design patterns, dan best practices dalam OOP',
+                'Code Organization: Belajar struktur code yang maintainable, scalable, dan reusable',
+                'Problem Modeling: Kemampuan modeling real-world problems menggunakan class diagrams dan OOP concepts',
+                'Debugging Skills: Identify dan fix common OOP errors seperti NullPointerException, ClassCastException, dll',
+                'Software Engineering Fundamentals: Foundation untuk advanced topics seperti Frameworks, Design Patterns, dan Architectural Patterns',
+                'Industry Readiness: Persiapan untuk development dengan Java Spring, C# .NET, Python Django, dan frameworks modern lainnya'
+            ]
+        },
+        
+        objective: 'Memberikan platform pembelajaran interaktif yang memudahkan mahasiswa Teknologi Informasi Politeknik Negeri Malang menguasai konsep-konsep fundamental dan advanced dalam Pemrograman Berorientasi Objek (PBO), khususnya Inheritance, Polymorphism, dan Encapsulation, dengan pendekatan yang mendorong pembelajaran mandiri, pemahaman mendalam, dan aplikasi praktis dalam software development.',
+        
+        targetAge: 'Mahasiswa TI (18-22 tahun)',
+        difficulty: 'Beginner to Advanced',
+        duration: 'Self-paced (±40 jam konten)',
+        skills: 'Object-Oriented Programming • Java • Class Design • UML Diagrams • Software Architecture • Design Patterns • Problem Solving • Code Quality',
+        
+        technicalFeatures: [
+            'Interactive code editor dengan multi-language support (Java, C++, Python, C#)',
+            'Real-time syntax checking dan code compilation',
+            'Automated test cases untuk verify code correctness',
+            'Responsive design - akses dari desktop, tablet, atau mobile',
+            'Progress tracking & cloud sync',
+            'Export learning report untuk portfolio atau submission'
+        ],
+        
+        stats: {
+            modules: '12',
+            exercises: '150+',
+            quizzes: '50+',
+            avgCompletion: '40 hours'
+        }
     }
 };
+
+// Expose gameDetails to window for info.js
+window.gameDetails = gameDetails;
 
 // ========================================
 // MODAL FUNCTIONS
@@ -346,19 +447,33 @@ function startGame(gameName) {
 // ========================================
 
 function initTooltips() {
+    // Tooltip disabled - using game name overlay instead
+    return;
+}
+
+// ========================================
+// GAME NAME OVERLAY HOVER EFFECT
+// ========================================
+
+function initGameNameOverlay() {
     const gameBoxes = document.querySelectorAll('.game-box');
     
     gameBoxes.forEach(box => {
-        const tooltip = box.querySelector('.tooltip');
+        const overlay = box.querySelector('.game-name-overlay');
+        const logo = box.querySelector('.game-logo');
         
         box.addEventListener('mouseenter', () => {
-            tooltip.style.opacity = '1';
-            tooltip.style.transform = 'translateX(-50%) translateY(0)';
+            // Animate overlay appearance
+            setTimeout(() => {
+                overlay.style.animation = 'fadeInScale 0.4s ease forwards';
+            }, 50);
+            
+            // Optional: Add pulse effect to text
+            overlay.style.animation = 'pulseText 1.5s ease-in-out infinite';
         });
         
         box.addEventListener('mouseleave', () => {
-            tooltip.style.opacity = '0';
-            tooltip.style.transform = 'translateX(-50%) translateY(-10px)';
+            overlay.style.animation = 'none';
         });
     });
 }
@@ -368,8 +483,8 @@ function initTooltips() {
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tooltips
-    initTooltips();
+    // Initialize game name overlay hover effects
+    initGameNameOverlay();
     
     // Handle INFO buttons
     const infoBtns = document.querySelectorAll('.btn-info');

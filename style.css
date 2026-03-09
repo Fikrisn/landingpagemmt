@@ -219,11 +219,190 @@ header {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* ========================================
+   LAB MMT TITLE ANIMATIONS (labmmt.js)
+   ======================================== */
+
+/* Letter Animation Base */
+.letter-animate {
+    display: inline-block;
+    transition: all 0.3s ease;
+    animation: letterEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+    transform-origin: center;
+}
+
+/* Letter Entrance Animation */
+@keyframes letterEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(-180deg) scale(0);
+    }
+    50% {
+        transform: translateY(20px) rotate(10deg) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1);
+    }
+}
+
+/* Letter Bounce on Hover */
+@keyframes letterBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-8px) scale(1.08) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05) rotate(2deg);
+    }
+    75% {
+        transform: translateY(-6px) scale(1.06) rotate(-1deg);
+    }
+}
+
+/* Blinking Cursor */
+.cursor-blink {
+    animation: cursorBlink 1s step-end infinite;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+@keyframes cursorBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Scan Line Effect */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.4) 50%, 
+        transparent 100%
+    );
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    animation: scanLineMove 4s linear infinite;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@keyframes scanLineMove {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+/* Title Particle Canvas */
+.title-particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Glitch Text Effect */
+.title.glitch-active {
+    animation: glitchAnimation 0.3s infinite;
+}
+
+@keyframes glitchAnimation {
+    0% {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.5),
+            -2px -2px 0 rgb(255, 0, 0),
+            2px 2px 0 rgb(0, 255, 255);
+    }
+    25% {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.5),
+            2px -2px 0 rgb(0, 255, 255),
+            -2px 2px 0 rgb(255, 0, 0);
+    }
+    50% {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.5),
+            -2px 2px 0 rgb(255, 0, 0),
+            2px -2px 0 rgb(0, 255, 255);
+    }
+    75% {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.5),
+            2px 2px 0 rgb(0, 255, 255),
+            -2px -2px 0 rgb(255, 0, 0);
+    }
+    100% {
+        text-shadow: 
+            3px 3px 6px rgba(0, 0, 0, 0.5),
+            -2px -2px 0 rgb(255, 0, 0),
+            2px 2px 0 rgb(0, 255, 255);
+    }
+}
+
+/* Electric/Lightning Effect Base */
+.letter-animate.electric {
+    animation: electricPulse 0.1s ease-in-out;
+}
+
+@keyframes electricPulse {
+    0%, 100% {
+        filter: brightness(1);
+        text-shadow: 0 0 5px #fff;
+    }
+    50% {
+        filter: brightness(2);
+        text-shadow: 
+            0 0 10px #FFD700,
+            0 0 20px #FFD700,
+            0 0 30px #FFD700;
+    }
+}
+
+/* Rainbow Color Cycling */
+@keyframes rainbowCycle {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* 3D Perspective for Title */
+.title {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+/* ========================================
+   END LAB MMT ANIMATIONS
+   ======================================== */
+
+
 .games-container {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 40px;
     margin-bottom: 60px;
+    flex-wrap: nowrap;
 }
 
 .game-wrapper {
@@ -234,8 +413,8 @@ header {
 }
 
 .game-box {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     background: #ffffff;
     border: 6px solid #FFB347;
     border-radius: 15px;
@@ -243,7 +422,7 @@ header {
     align-items: center;
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 
         0 0 0 3px #ffffff,
         0 0 0 8px #FF8C69,
@@ -251,6 +430,8 @@ header {
         0 12px 20px rgba(0, 0, 0, 0.3);
     position: relative;
     cursor: pointer;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .game-box:hover {
@@ -260,6 +441,41 @@ header {
         0 0 0 8px #FFC870,
         0 13px 0 8px #c97a2e,
         0 18px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Game Name Overlay on Hover */
+.game-name-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 179, 71, 0.92) 0%, rgba(255, 140, 105, 0.92) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-radius: 9px;
+}
+
+.game-box:hover .game-name-overlay {
+    opacity: 1;
+}
+
+.game-box:hover .game-logo {
+    filter: blur(2px);
 }
 
 /* Tooltip Styles */
@@ -345,6 +561,9 @@ header {
     object-fit: contain;
     border-radius: 11px;
     padding: 10px;
+    transition: filter 0.4s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .game-content {
@@ -1112,6 +1331,179 @@ footer {
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(5px); }
 }
+
+/* Game Name Overlay Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========================================
+   ADVANCED ANIMATION EFFECTS (animasi.js)
+   ======================================== */
+
+/* Shake In Animation */
+@keyframes shakeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-5deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Text Wave Animation */
+@keyframes textWave {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        transform: translateY(-5px) scale(1.02);
+    }
+    75% {
+        transform: translateY(5px) scale(0.98);
+    }
+}
+
+/* Glow Pulse Animation */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 0 3px #ffffff,
+            0 0 0 8px #FFC870,
+            0 13px 0 8px #c97a2e,
+            0 18px 30px rgba(0, 0, 0, 0.5),
+            0 0 15px rgba(255, 179, 71, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 0 3px #ffffff,
+            0 0 0 8px #FFD700,
+            0 13px 0 8px #c97a2e,
+            0 18px 30px rgba(0, 0, 0, 0.5),
+            0 0 25px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* Floating Icons */
+.floating-icon {
+    position: absolute;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 15;
+    animation: floatUp 2.5s ease-out forwards;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes floatUp {
+    0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-100px) rotate(90deg) scale(1);
+    }
+    100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateY(-200px) rotate(180deg) scale(0);
+    }
+}
+
+/* Rotating Border Effect */
+.rotating-border {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 3px solid transparent;
+    border-top-color: #FFD700;
+    border-right-color: #FF8C69;
+    border-radius: 20px;
+    z-index: 1;
+    pointer-events: none;
+    animation: rotateBorder 2s linear infinite;
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Ripple Effect on Click */
+.ripple-effect {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 179, 71, 0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    animation: rippleAnimation 0.6s ease-out;
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes rippleAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(20);
+        opacity: 0;
+    }
+}
+
+/* Particle Canvas */
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-radius: 15px;
+    z-index: 5;
+}
+
+/* Enhanced Game Box for 3D Effect */
+.game-box {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* ========================================
+   END ADVANCED ANIMATIONS
+   ======================================== */
 
 /* Modal Animations */
 @keyframes slideDown {
